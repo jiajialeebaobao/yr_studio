@@ -31,7 +31,7 @@ export function Hero() { return (<section className="hero" aria-label="怡然集
             </div>
             <div className="hero-metrics" aria-label="工作室数据">
               <div className="metric">
-                <strong>8</strong>
+                <strong>10</strong>
                 <span>人以内小班</span>
               </div>
               <div className="metric">
