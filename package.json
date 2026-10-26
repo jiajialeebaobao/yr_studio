@@ -1,0 +1,42 @@
+{
+  "name": "yiranji-yoga-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:api": "tsx --test tests/http.integration.ts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "setup": "node scripts/setup.mjs && prisma generate && prisma migrate deploy",
+    "worker": "tsx scripts/settle.ts",
+    "db:backup": "tsx scripts/backup.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.0",
+    "dotenv": "16.6.1",
+    "lucide-react": "0.548.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "overrides": {
+    "@prisma/config": {
+      "deepmerge-ts": "8.0.0",
+      "effect": "3.20.0"
+    }
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "prisma": "6.19.0",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3"
+  }
+}

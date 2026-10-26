@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>怡然集瑜伽工作室</title>
+    <style>
+      :root {
+        --ink: #27302b;
+        --muted: #657067;
+        --paper: #fbf7ef;
+        --soft: #f1eadf;
+        --sage: #8fa895;
+        --moss: #536b56;
+        --clay: #b86f54;
+        --line: rgba(39, 48, 43, 0.14);
+        --white: #fffdf8;
+        --shadow: 0 18px 60px rgba(63, 76, 62, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family:
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial,
+          sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .site-header {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-bottom: 1px solid rgba(255, 253, 248, 0.36);
+        background: rgba(251, 247, 239, 0.74);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1160px, calc(100% - 40px));
+        height: 72px;
+        margin: 0 auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid rgba(83, 107, 86, 0.28);
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--moss);
+        font-family: Georgia, serif;
+        font-size: 22px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: rgba(39, 48, 43, 0.78);
+        font-size: 14px;
+      }
+
+      .nav-cta,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: var(--moss);
+        color: var(--white);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 92vh;
+        padding: 108px 0 42px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(
+            90deg,
+            rgba(251, 247, 239, 0.98) 0%,
+            rgba(251, 247, 239, 0.86) 38%,
+            rgba(251, 247, 239, 0.24) 68%,
+            rgba(251, 247, 239, 0.1) 100%
+          ),
+          url("assets/hero-yoga-studio.png") center right / cover no-repeat;
+      }
+
+      .hero::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        height: 22vh;
+        content: "";
+        background: linear-gradient(
+          180deg,
+          rgba(251, 247, 239, 0),
+          var(--paper)
+        );
+      }
+
+      .hero-inner,
+      .section-inner {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .hero-copy {
+        display: grid;
+        align-content: center;
+        width: min(620px, 100%);
+        min-height: calc(92vh - 150px);
+      }
+
+      .eyebrow {
+        color: var(--clay);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 18px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(52px, 8vw, 112px);
+        font-weight: 500;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero-text {
+        max-width: 520px;
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .button.secondary {
+        border-color: rgba(83, 107, 86, 0.28);
+        background: rgba(255, 253, 248, 0.72);
+        color: var(--moss);
+      }
+
+      .hero-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        width: min(620px, 100%);
+        margin-top: 48px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .metric {
+        min-height: 92px;
+        padding: 18px;
+        background: rgba(255, 253, 248, 0.78);
+      }
+
+      .metric strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 30px;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      section {
+        padding: 86px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.38fr);
+        gap: 44px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin-top: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(34px, 5vw, 58px);
+        font-weight: 500;
+        line-height: 1.04;
+      }
+
+      .section-lede {
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .classes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .class-card,
+      .teacher-card,
+      .price-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .class-card {
+        display: grid;
+        min-height: 280px;
+        padding: 26px;
+        align-content: space-between;
+      }
+
+      .class-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--moss);
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      h3 {
+        margin-top: 28px;
+        font-size: 24px;
+        line-height: 1.2;
+      }
+
+      .class-card p,
+      .teacher-card p,
+      .price-card p {
+        margin-top: 14px;
+        color: var(--muted);
+      }
+
+      .class-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+        color: var(--moss);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .studio-band {
+        background: #e6ecdf;
+      }
+
+      .studio-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.6fr);
+        gap: 52px;
+        align-items: center;
+      }
+
+      .studio-photo {
+        aspect-ratio: 1.45;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .studio-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .space-gallery {
+        margin-top: 34px;
+      }
+
+      .space-track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        border-radius: 8px;
+      }
+
+      .space-track::-webkit-scrollbar { display: none; }
+
+      .space-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .space-controls button {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        color: var(--moss);
+        background: var(--white);
+        font: inherit;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .space-controls button:focus-visible {
+        outline: 2px solid var(--moss);
+        outline-offset: 3px;
+      }
+
+      .space-dots { display: flex; gap: 4px; }
+      .space-dots button { width: 32px; border: 0; background: transparent; }
+      .space-dots button::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #aab7a4;
+      }
+      .space-dots button[aria-current="true"]::before { background: var(--moss); }
+
+      .space-card {
+        position: relative;
+        flex: 0 0 100%;
+        min-width: 0;
+        aspect-ratio: 16 / 9;
+        margin: 0;
+        scroll-snap-align: start;
+        overflow: hidden;
+        border: 1px solid rgba(83, 107, 86, 0.18);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: 0 18px 48px rgba(63, 76, 62, 0.12);
+        isolation: isolate;
+      }
+
+      .space-card::after {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        content: "";
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 223, 178, 0.2) 0%,
+            rgba(238, 191, 132, 0.18) 42%,
+            rgba(77, 52, 35, 0.48) 100%
+          ),
+          rgba(246, 212, 164, 0.22);
+        pointer-events: none;
+        mix-blend-mode: soft-light;
+      }
+
+      .space-caption {
+        padding: 16px;
+        border-radius: 6px;
+        background: rgba(39, 48, 43, 0.72);
+      }
+
+      .space-card img {
+        width: 100%;
+        height: 100%;
+        min-height: inherit;
+        object-fit: cover;
+        filter: sepia(0.22) saturate(0.94) brightness(1.12) contrast(0.9)
+          hue-rotate(-7deg);
+        transform: scale(1.01);
+      }
+
+      .space-caption {
+        position: absolute;
+        right: 22px;
+        bottom: 20px;
+        left: 22px;
+        z-index: 2;
+        color: var(--white);
+      }
+
+      .space-caption strong {
+        display: block;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .space-caption span {
+        display: block;
+        margin-top: 6px;
+        color: rgba(255, 253, 248, 0.78);
+        font-size: 13px;
+      }
+
+      .feature-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .feature {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .feature-icon {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--moss);
+        font-weight: 900;
+      }
+
+      .feature strong {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .feature span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .teachers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .teacher-card {
+        padding: 24px;
+      }
+
+      .teacher-avatar {
+        display: grid;
+        width: 74px;
+        height: 74px;
+        place-items: center;
+        border-radius: 50%;
+        background:
+          linear-gradient(135deg, rgba(143, 168, 149, 0.38), transparent),
+          var(--soft);
+        color: var(--moss);
+        font-family: Georgia, serif;
+        font-size: 30px;
+      }
+
+      .schedule {
+        border-block: 1px solid var(--line);
+      }
+
+      .schedule-list {
+        display: grid;
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--line);
+      }
+
+      .schedule-row {
+        display: grid;
+        grid-template-columns: 150px 1fr 140px 120px;
+        gap: 18px;
+        align-items: center;
+        min-height: 74px;
+        padding: 16px 22px;
+        background: var(--white);
+      }
+
+      .schedule-row strong {
+        color: var(--moss);
+      }
+
+      .schedule-row span {
+        color: var(--muted);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .price-card {
+        display: grid;
+        min-height: 330px;
+        padding: 28px;
+        align-content: space-between;
+      }
+
+      .price-card.featured {
+        border-color: rgba(184, 111, 84, 0.36);
+        background: #fff7ef;
+        box-shadow: var(--shadow);
+      }
+
+      .price {
+        margin-top: 20px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 44px;
+        line-height: 1;
+      }
+
+      .price small {
+        color: var(--muted);
+        font-family: inherit;
+        font-size: 16px;
+      }
+
+      .price-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 24px 0 0;
+        padding: 0;
+        color: var(--muted);
+        list-style: none;
+      }
+
+      .price-card li::before {
+        margin-right: 10px;
+        color: var(--clay);
+        content: "·";
+        font-weight: 900;
+      }
+
+      .booking {
+        background: var(--ink);
+        color: var(--white);
+      }
+
+      .booking .eyebrow,
+      .booking .section-lede {
+        color: rgba(255, 253, 248, 0.72);
+      }
+
+      .booking-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.7fr) minmax(320px, 0.48fr);
+        gap: 52px;
+        align-items: start;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 34px;
+        color: rgba(255, 253, 248, 0.78);
+      }
+
+      .booking-rules {
+        display: grid;
+        gap: 10px;
+        margin-top: 26px;
+        padding: 18px;
+        border: 1px solid rgba(255, 253, 248, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.07);
+      }
+
+      .booking-rules strong {
+        color: var(--white);
+        font-size: 15px;
+      }
+
+      .booking-rules span {
+        color: rgba(255, 253, 248, 0.74);
+        font-size: 14px;
+      }
+
+      .map-card {
+        margin-top: 26px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 253, 248, 0.14);
+        border-radius: 8px;
+        background: #f7efe3;
+        color: var(--ink);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+      }
+
+      .map-visual {
+        display: none;
+        width: 100%;
+        height: auto;
+      }
+
+      .map-image-wrap {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+
+      .map-ai-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .map-info-label {
+        position: absolute;
+        z-index: 1;
+        padding: 4px 8px;
+        border: 1px solid rgba(39, 48, 43, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.72);
+        color: rgba(39, 48, 43, 0.68);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.2;
+        white-space: nowrap;
+        backdrop-filter: blur(8px);
+      }
+
+      .map-info-label.road {
+        background: rgba(255, 244, 213, 0.82);
+        color: rgba(89, 68, 34, 0.82);
+      }
+
+      .map-info-label.commercial {
+        background: rgba(255, 253, 248, 0.8);
+        color: rgba(83, 107, 86, 0.86);
+      }
+
+      .map-info-label.park {
+        background: rgba(229, 245, 221, 0.82);
+        color: rgba(67, 104, 71, 0.86);
+      }
+
+      .map-info-label.north-road {
+        top: 8%;
+        left: 26%;
+        transform: rotate(-12deg);
+      }
+
+      .map-info-label.vertical-road {
+        top: 43%;
+        left: 62%;
+        transform: rotate(80deg);
+      }
+
+      .map-info-label.world-city {
+        top: 42%;
+        left: 18%;
+      }
+
+      .map-info-label.home-market {
+        top: 49%;
+        left: 27%;
+      }
+
+      .map-info-label.curtain-market {
+        top: 30%;
+        left: 21%;
+      }
+
+      .map-info-label.park-name {
+        top: 62%;
+        left: 66%;
+      }
+
+      .map-info-label.wanjin {
+        top: 79%;
+        left: 41%;
+      }
+
+      .map-marker {
+        position: absolute;
+        z-index: 3;
+        top: 22%;
+        left: 24%;
+        display: grid;
+        gap: 10px;
+      }
+
+      .map-label {
+        min-width: 210px;
+        padding: 12px 14px;
+        border: 1px solid rgba(39, 48, 43, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.94);
+        box-shadow: 0 16px 40px rgba(39, 48, 43, 0.18);
+      }
+
+      .map-label strong,
+      .map-label span {
+        display: block;
+      }
+
+      .map-label strong {
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.25;
+      }
+
+      .map-label span {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .map-arrow {
+        position: absolute;
+        z-index: 3;
+        top: 35%;
+        left: 39%;
+        width: 138px;
+        height: 86px;
+      }
+
+      .map-dot {
+        position: absolute;
+        z-index: 3;
+        top: 48.4%;
+        left: 57.4%;
+        width: 24px;
+        height: 24px;
+        border: 6px solid var(--white);
+        border-radius: 50%;
+        background: var(--clay);
+        box-shadow: 0 12px 30px rgba(39, 48, 43, 0.22);
+        transform: translate(-50%, -50%);
+      }
+
+      .map-caption {
+        display: grid;
+        gap: 5px;
+        padding: 16px 18px 18px;
+        border-top: 1px solid rgba(39, 48, 43, 0.12);
+        background: rgba(255, 253, 248, 0.72);
+      }
+
+      .map-caption strong {
+        color: var(--moss);
+        font-size: 15px;
+      }
+
+      .map-caption span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .booking-form {
+        display: grid;
+        gap: 14px;
+        padding: 24px;
+        border: 1px solid rgba(255, 253, 248, 0.16);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.08);
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: rgba(255, 253, 248, 0.8);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 46px;
+        padding: 12px 13px;
+        border: 1px solid rgba(255, 253, 248, 0.2);
+        border-radius: 6px;
+        outline: none;
+        background: rgba(255, 253, 248, 0.94);
+        color: var(--ink);
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 92px;
+        resize: vertical;
+      }
+
+      .booking-form .button {
+        width: 100%;
+        border: 0;
+        background: var(--clay);
+        cursor: pointer;
+      }
+
+      .site-footer {
+        padding: 28px 0;
+        background: var(--ink);
+        color: rgba(255, 253, 248, 0.58);
+        font-size: 13px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      @media (max-width: 860px) {
+        .nav {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 96px;
+        }
+
+        .hero::before {
+          background:
+            linear-gradient(
+              180deg,
+              rgba(251, 247, 239, 0.98) 0%,
+              rgba(251, 247, 239, 0.9) 46%,
+              rgba(251, 247, 239, 0.64) 100%
+            ),
+            url("assets/hero-yoga-studio.png") 63% center / cover no-repeat;
+        }
+
+        .hero-inner,
+        .section-inner,
+        .footer-inner {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .hero-copy {
+          min-height: 680px;
+          align-content: end;
+          padding-bottom: 24px;
+        }
+
+        .hero-metrics,
+        .classes-grid,
+        .space-gallery,
+        .teachers-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .studio-layout,
+        .booking-layout {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        section {
+          padding: 64px 0;
+        }
+
+        .schedule-row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+          align-items: start;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .space-card { aspect-ratio: auto; }
+        .space-card img { height: auto; aspect-ratio: 16 / 9; }
+        .space-caption {
+          position: relative;
+          inset: auto;
+          min-height: 110px;
+          border-radius: 0;
+          background: var(--ink);
+        }
+
+        .brand span {
+          max-width: 150px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .nav-cta {
+          min-height: 40px;
+          padding-inline: 14px;
+          font-size: 13px;
+        }
+
+        h1 {
+          font-size: 54px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .hero-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .metric {
+          min-height: 78px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="#top" aria-label="怡然集瑜伽工作室首页">
+          <span class="brand-mark">怡</span>
+          <span>怡然集瑜伽工作室</span>
+        </a>
+        <div class="nav-links">
+          <a href="#classes">课程</a>
+          <a href="#studio">空间</a>
+          <a href="#schedule">课表</a>
+          <a href="#pricing">价格</a>
+        </div>
+        <a class="nav-cta" href="#booking">预约体验</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="怡然集瑜伽工作室">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Breath · Balance · Flow</span>
+            <h1>怡然集瑜伽<br />工作室</h1>
+            <p class="hero-text">
+              位于城市写字楼中的瑜伽空间，以哈他、流瑜伽、修复和呼吸练习，陪你把身体重新带回稳定、清醒与松弛。
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#booking">预约第一节课</a>
+              <a class="button secondary" href="#classes">查看课程</a>
+            </div>
+            <div class="hero-metrics" aria-label="工作室数据">
+              <div class="metric">
+                <strong>8</strong>
+                <span>人以内小班</span>
+              </div>
+              <div class="metric">
+                <strong>12+</strong>
+                <span>每周主题课程</span>
+              </div>
+              <div class="metric">
+                <strong>90</strong>
+                <span>分钟深度练习</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="classes">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Classes</span>
+              <h2>从温和觉察到稳定进阶</h2>
+            </div>
+            <p class="section-lede">
+              每节课都保留足够的调整时间，老师会根据学员状态给出替代动作，让初学者和长期练习者都能找到适合自己的节奏。
+            </p>
+          </div>
+
+          <div class="classes-grid">
+            <article class="class-card">
+              <div>
+                <div class="class-top">
+                  <span class="tag">初学友好</span>
+                  <span>01</span>
+                </div>
+                <h3>基础哈他</h3>
+                <p>拆解站姿、前屈、扭转和后弯，用清晰的发力路径建立身体稳定性。</p>
+              </div>
+              <div class="class-meta">
+                <span>60 分钟</span>
+                <span>周一 / 周四</span>
+              </div>
+            </article>
+
+            <article class="class-card">
+              <div>
+                <div class="class-top">
+                  <span class="tag">能量流动</span>
+                  <span>02</span>
+                </div>
+                <h3>晨间流瑜伽</h3>
+                <p>以呼吸串联动作，唤醒核心和肩髋，让一天从有力量的专注开始。</p>
+              </div>
+              <div class="class-meta">
+                <span>75 分钟</span>
+                <span>周二 / 周六</span>
+              </div>
+            </article>
+
+            <article class="class-card">
+              <div>
+                <div class="class-top">
+                  <span class="tag">深度放松</span>
+                  <span>03</span>
+                </div>
+                <h3>修复与呼吸</h3>
+                <p>借助辅具停留和呼吸练习，缓解紧张、改善睡眠，适合下班后的恢复。</p>
+              </div>
+              <div class="class-meta">
+                <span>90 分钟</span>
+                <span>周三 / 周日</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="studio" class="studio-band">
+        <div class="section-inner studio-layout">
+          <div class="studio-photo">
+            <img
+              src="assets/hero-yoga-studio.png"
+              alt="明亮安静的瑜伽工作室空间"
+            />
+          </div>
+          <div>
+            <span class="eyebrow">Studio</span>
+            <h2>一间让呼吸慢下来的练习室</h2>
+            <p class="section-lede">
+              木地板、自然光、干净辅具和低噪音环境，让身体在进入体式之前，先感到被妥善安放。
+            </p>
+            <div class="feature-list">
+              <div class="feature">
+                <span class="feature-icon">✓</span>
+                <div>
+                  <strong>专业辅具</strong>
+                  <span>瑜伽砖、伸展带、抱枕与毛毯均可免费使用。</span>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">✓</span>
+                <div>
+                  <strong>小班照看</strong>
+                  <span>老师会观察动作细节，提供安全、适度的调整。</span>
+                </div>
+              </div>
+              <div class="feature">
+                <span class="feature-icon">✓</span>
+                <div>
+                  <strong>茶歇区域</strong>
+                  <span>课后可短暂停留，给练习一个柔和的收尾。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-inner space-gallery" role="region" aria-roledescription="轮播" aria-label="店内环境实拍">
+          <div class="space-track" tabindex="0" aria-label="环境照片，可左右滑动">
+          <figure class="space-card">
+            <img
+              src="assets/studio-interior-01.jpg"
+              alt="瑜伽教室内整齐摆放的垫子和辅具"
+              loading="lazy"
+            />
+            <figcaption class="space-caption">
+              <strong>宽敞练习区</strong>
+              <span>预留足够间距，适合小班体式调整与流动练习。</span>
+            </figcaption>
+          </figure>
+          <figure class="space-card">
+            <img
+              src="assets/studio-interior-02.jpg"
+              alt="带镜面和把杆的明亮瑜伽教室"
+              loading="lazy"
+            />
+            <figcaption class="space-caption">
+              <strong>镜面与辅具区</strong>
+              <span>清晰观察身体线条，辅具随手可取，练习更安心。</span>
+            </figcaption>
+          </figure>
+          <figure class="space-card">
+            <img src="assets/studio-interior-03.jpg" alt="自然光下的瑜伽练习室，整齐摆放的垫子、毛巾与训练辅具" loading="lazy" />
+            <figcaption class="space-caption">
+              <strong>日光练习室</strong>
+              <span>柔和日光与干净的木地板，陪你安静地舒展身体。</span>
+            </figcaption>
+          </figure>
+          </div>
+          <div class="space-controls">
+            <button type="button" data-space-prev aria-label="上一张" title="上一张">&#8249;</button>
+            <div class="space-dots" aria-label="选择照片">
+              <button type="button" data-space-index="0" aria-label="第 1 张：宽敞练习区" aria-current="true"></button>
+              <button type="button" data-space-index="1" aria-label="第 2 张：镜面与辅具区" aria-current="false"></button>
+              <button type="button" data-space-index="2" aria-label="第 3 张：日光练习室" aria-current="false"></button>
+            </div>
+            <button type="button" data-space-next aria-label="下一张" title="下一张">&#8250;</button>
+            <button type="button" data-space-pause aria-label="暂停轮播" title="暂停轮播">&#8545;</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="teachers">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Teachers</span>
+              <h2>老师不是示范者，而是陪伴者</h2>
+            </div>
+            <p class="section-lede">
+              我们重视动作背后的感受，也重视每个人身体经验的差异。练习不追求完成某个形状，而是学会更准确地照顾自己。
+            </p>
+          </div>
+
+          <div class="teachers-grid">
+            <article class="teacher-card">
+              <div class="teacher-avatar">林</div>
+              <h3>林予安</h3>
+              <p>哈他与女性健康方向，擅长用细致口令建立稳定根基。</p>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-avatar">周</div>
+              <h3>周辰</h3>
+              <p>流瑜伽与功能训练背景，课程节奏清晰，兼顾力量与呼吸。</p>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-avatar">许</div>
+              <h3>许南</h3>
+              <p>修复瑜伽与冥想带领者，适合压力恢复与睡眠改善练习。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule" class="schedule">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Schedule</span>
+              <h2>本周精选课表</h2>
+            </div>
+            <p class="section-lede">
+              课程需提前 4 小时预约，满 3 人开课。若身体有旧伤、孕期或特殊状况，可在预约时备注，老师会提前沟通。
+            </p>
+          </div>
+
+          <div class="schedule-list">
+            <div class="schedule-row">
+              <strong>周一 19:30</strong>
+              <span>基础哈他 · 肩颈舒展</span>
+              <span>林予安</span>
+              <span>余 3 位</span>
+            </div>
+            <div class="schedule-row">
+              <strong>周三 20:00</strong>
+              <span>修复与呼吸 · 深度睡眠</span>
+              <span>许南</span>
+              <span>余 5 位</span>
+            </div>
+            <div class="schedule-row">
+              <strong>周六 09:30</strong>
+              <span>晨间流瑜伽 · 核心唤醒</span>
+              <span>周辰</span>
+              <span>余 2 位</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="section-inner">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Pricing</span>
+              <h2>按你的节奏开始</h2>
+            </div>
+            <p class="section-lede">
+              先用体验课确认空间、老师和练习方式是否适合你，再选择更长期的练习计划。
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="price-card">
+              <div>
+                <span class="tag">体验</span>
+                <h3>单次体验课</h3>
+                <div class="price">¥99</div>
+                <p>适合第一次到店，含课前身体状态沟通。</p>
+                <ul>
+                  <li>任选一节常规课</li>
+                  <li>免费使用辅具</li>
+                  <li>课后练习建议</li>
+                </ul>
+              </div>
+              <a class="button secondary" href="#booking">预约体验</a>
+            </article>
+
+            <article class="price-card featured">
+              <div>
+                <span class="tag">推荐</span>
+                <h3>月度练习卡</h3>
+                <div class="price">¥680 <small>/ 月</small></div>
+                <p>适合每周 1-2 次稳定练习，帮助身体建立连续记忆。</p>
+                <ul>
+                  <li>8 次小班课程</li>
+                  <li>可约所有常规课</li>
+                  <li>赠 1 次呼吸练习</li>
+                </ul>
+              </div>
+              <a class="button" href="#booking">选择月卡</a>
+            </article>
+
+            <article class="price-card">
+              <div>
+                <span class="tag">私教</span>
+                <h3>一对一课程</h3>
+                <div class="price">¥360 <small>/ 次</small></div>
+                <p>针对体态、旧伤恢复、进阶体式或个性化练习目标。</p>
+                <ul>
+                  <li>课前评估</li>
+                  <li>定制练习方案</li>
+                  <li>动作细节记录</li>
+                </ul>
+              </div>
+              <a class="button secondary" href="#booking">咨询私教</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="booking">
+        <div class="section-inner booking-layout">
+          <div>
+            <span class="eyebrow">Booking</span>
+            <h2>给自己留一小时，重新听见身体</h2>
+            <p class="section-lede">
+              留下联系方式后，我们会与你确认可预约时段、开课人数和到店提示。
+            </p>
+            <div class="booking-rules" aria-label="预约规则">
+              <strong>预约规则</strong>
+              <span>课程需提前 4 小时预约。</span>
+              <span>常规小班满 3 人预约才开课。</span>
+              <span>开课前 3 小时及以上取消，不收取费用。</span>
+            </div>
+            <div class="contact-list" aria-label="联系方式">
+              <span>地址：内蒙古呼和浩特市玉泉区闻都世界城 17F1405</span>
+              <span>电话：021-8800-6188</span>
+              <span>营业：周一至周日 08:00 - 20:00</span>
+            </div>
+            <figure class="map-card" aria-label="怡然集瑜伽工作室位置示意图">
+              <div class="map-image-wrap">
+                <img
+                  class="map-ai-image"
+                  src="assets/yoga-map-ai.jpg"
+                  alt="呼和浩特玉泉区闻都世界城周边的暖色轻运动风格地图"
+                  loading="lazy"
+                />
+                <span class="map-info-label road north-road">南二环路</span>
+                <span class="map-info-label road vertical-road">锡林郭勒南路</span>
+                <span class="map-info-label commercial world-city">闻都世界城</span>
+                <span class="map-info-label commercial home-market">闻都家居建材城</span>
+                <span class="map-info-label commercial curtain-market">宏绣墙布·窗帘</span>
+                <span class="map-info-label park park-name">玉泉区五里营公园</span>
+                <span class="map-info-label commercial wanjin">万锦融城</span>
+                <div class="map-marker" aria-label="怡然集瑜伽工作室，闻都世界城 17F1405">
+                  <div class="map-label">
+                    <strong>怡然集瑜伽工作室</strong>
+                    <span>闻都世界城 17F1405</span>
+                  </div>
+                </div>
+                <svg
+                  class="map-arrow"
+                  viewBox="0 0 120 70"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 12 C 38 10, 70 24, 102 58"
+                    fill="none"
+                    stroke="#27302b"
+                    stroke-linecap="round"
+                    stroke-width="12"
+                  />
+                  <path
+                    d="M102 58 L74 54 M102 58 L91 30"
+                    fill="none"
+                    stroke="#27302b"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="12"
+                  />
+                  <path
+                    d="M10 12 C 38 10, 70 24, 102 58"
+                    fill="none"
+                    stroke="#fffdf8"
+                    stroke-linecap="round"
+                    stroke-width="5"
+                  />
+                </svg>
+                <span class="map-dot" aria-hidden="true"></span>
+              </div>
+              <svg
+                class="map-visual"
+                viewBox="0 0 760 430"
+                role="img"
+                aria-labelledby="map-title map-desc"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title id="map-title">怡然集瑜伽工作室位置示意图</title>
+                <desc id="map-desc">
+                  内蒙古呼和浩特市玉泉区闻都世界城 17F1405 的轻运动风格地图。
+                </desc>
+                <defs>
+                  <linearGradient id="mapWarm" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#fff8eb" />
+                    <stop offset="1" stop-color="#eadfcb" />
+                  </linearGradient>
+                  <filter id="pinShadow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feDropShadow
+                      dx="0"
+                      dy="12"
+                      flood-color="#5d4b35"
+                      flood-opacity="0.24"
+                      stdDeviation="10"
+                    />
+                  </filter>
+                </defs>
+
+                <rect width="760" height="430" fill="url(#mapWarm)" />
+
+                <g opacity="0.9">
+                  <rect x="12" y="94" width="410" height="246" rx="26" fill="#f0e6f0" />
+                  <rect x="26" y="270" width="150" height="94" rx="20" fill="#dfe7eb" />
+                  <rect x="472" y="26" width="260" height="132" rx="28" fill="#dde7eb" />
+                  <path
+                    d="M498 170 C 540 154, 598 170, 622 210 C 656 266, 624 332, 668 410 L548 430 C 518 370, 538 320, 506 274 C 480 236, 462 202, 498 170 Z"
+                    fill="#bfeac1"
+                  />
+                  <rect x="618" y="198" width="136" height="92" rx="24" fill="#f3ddd8" />
+                  <rect x="560" y="322" width="178" height="64" rx="22" fill="#dfe7eb" />
+                </g>
+
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M-26 78 L430 -18" stroke="#f2be49" stroke-width="30" />
+                  <path d="M-26 78 L430 -18" stroke="#ffe58b" stroke-width="18" />
+                  <path d="M438 -34 L520 452" stroke="#d2d6de" stroke-width="34" />
+                  <path d="M438 -34 L520 452" stroke="#fffdf8" stroke-width="16" />
+                  <path d="M454 -26 L536 452" stroke="#c6d2ff" stroke-width="4" />
+                  <path d="M-20 350 C 96 310, 174 304, 250 342 S 398 378, 500 330" stroke="#d2d6de" stroke-width="24" />
+                  <path d="M-20 350 C 96 310, 174 304, 250 342 S 398 378, 500 330" stroke="#fffdf8" stroke-width="12" />
+                </g>
+
+                <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" opacity="0.95">
+                  <path d="M34 126 L392 64" />
+                  <path d="M28 176 L414 118" />
+                  <path d="M40 230 L420 174" />
+                  <path d="M58 300 L420 240" />
+                  <path d="M118 96 L112 330" />
+                  <path d="M214 78 L198 330" />
+                  <path d="M318 54 L304 312" />
+                  <path d="M62 372 L444 300" />
+                  <path d="M540 194 C 576 200, 598 228, 598 264 C 598 298, 574 328, 540 334" />
+                  <path d="M604 334 C 638 318, 664 322, 706 342" />
+                  <path d="M606 62 L728 42" />
+                  <path d="M600 116 L724 90" />
+                </g>
+
+                <g
+                  fill="#657067"
+                  font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif"
+                  font-size="15"
+                  font-weight="700"
+                  opacity="0.84"
+                >
+                  <text x="174" y="61" transform="rotate(-12 174 61)">南二环路</text>
+                  <text x="505" y="250" transform="rotate(80 505 250)">锡林郭勒南路</text>
+                  <text x="83" y="214">闻都世界城</text>
+                  <text x="80" y="244">闻都家居建材城</text>
+                  <text x="558" y="300">玉泉区五里营公园</text>
+                  <text x="603" y="352">春光嘉园</text>
+                </g>
+
+                <g opacity="0.78">
+                  <circle cx="188" cy="212" r="12" fill="#9f76db" />
+                  <text
+                    x="188"
+                    y="217"
+                    fill="#fffdf8"
+                    font-family="Arial, sans-serif"
+                    font-size="16"
+                    font-weight="700"
+                    text-anchor="middle"
+                  >
+                    P
+                  </text>
+                  <circle cx="392" cy="166" r="12" fill="#5d83d6" />
+                  <text
+                    x="392"
+                    y="171"
+                    fill="#fffdf8"
+                    font-family="Arial, sans-serif"
+                    font-size="16"
+                    font-weight="700"
+                    text-anchor="middle"
+                  >
+                    P
+                  </text>
+                  <circle cx="258" cy="254" r="10" fill="#9f76db" />
+                  <circle cx="448" cy="242" r="10" fill="#5d83d6" />
+                </g>
+
+                <g filter="url(#pinShadow)">
+                  <rect x="248" y="126" width="214" height="86" rx="24" fill="#fffdf8" />
+                  <text
+                    x="355"
+                    y="158"
+                    fill="#27302b"
+                    font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif"
+                    font-size="20"
+                    font-weight="800"
+                    text-anchor="middle"
+                  >
+                    怡然集瑜伽工作室
+                  </text>
+                  <text
+                    x="355"
+                    y="184"
+                    fill="#657067"
+                    font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif"
+                    font-size="14"
+                    text-anchor="middle"
+                  >
+                    闻都世界城 17F1405
+                  </text>
+                </g>
+
+                <g filter="url(#pinShadow)">
+                  <path
+                    d="M512 254 L424 222"
+                    fill="none"
+                    stroke="#27302b"
+                    stroke-linecap="round"
+                    stroke-width="14"
+                  />
+                  <path
+                    d="M424 222 L456 207 M424 222 L446 251"
+                    fill="none"
+                    stroke="#27302b"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="14"
+                  />
+                  <path
+                    d="M512 254 L424 222"
+                    fill="none"
+                    stroke="#fffdf8"
+                    stroke-linecap="round"
+                    stroke-width="6"
+                  />
+                  <circle cx="405" cy="222" r="18" fill="#b86f54" stroke="#fffdf8" stroke-width="7" />
+                  <circle cx="405" cy="222" r="6" fill="#fffdf8" />
+                </g>
+
+                <g fill="#536b56" opacity="0.72">
+                  <circle cx="70" cy="392" r="5" />
+                  <circle cx="94" cy="392" r="5" />
+                  <circle cx="118" cy="392" r="5" />
+                </g>
+              </svg>
+              <figcaption class="map-caption">
+                <strong>门店位置</strong>
+                <span>内蒙古呼和浩特市玉泉区闻都世界城 17F1405</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <form class="booking-form">
+            <label>
+              姓名
+              <input type="text" name="name" placeholder="你的称呼" />
+            </label>
+            <label>
+              手机
+              <input type="tel" name="phone" placeholder="用于确认预约" />
+            </label>
+            <label>
+              想体验的课程
+              <select name="class">
+                <option>基础哈他</option>
+                <option>晨间流瑜伽</option>
+                <option>修复与呼吸</option>
+                <option>一对一私教</option>
+              </select>
+            </label>
+            <label>
+              备注
+              <textarea
+                name="message"
+                placeholder="例如：初学、肩颈紧张、希望周末上课"
+              ></textarea>
+            </label>
+            <button class="button" type="submit">提交预约</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>© 2026 怡然集瑜伽工作室</span>
+        <span>Breath with care. Move with clarity.</span>
+      </div>
+    </footer>
+    <script>
+      (() => {
+        const gallery = document.querySelector('.space-gallery');
+        const track = gallery.querySelector('.space-track');
+        const slides = [...track.querySelectorAll('.space-card')];
+        const dots = [...gallery.querySelectorAll('[data-space-index]')];
+        const pauseButton = gallery.querySelector('[data-space-pause]');
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        let index = 0;
+        let paused = reducedMotion.matches;
+        let timer;
+        let visible = false;
+
+        const go = (next) => {
+          index = (next + slides.length) % slides.length;
+          track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft,
+            behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+        };
+        const schedule = () => {
+          clearInterval(timer);
+          if (!paused && visible && !document.hidden &&
+              !gallery.matches(':hover') && !gallery.contains(document.activeElement)) {
+            timer = setInterval(() => go(index + 1), 5000);
+          }
+        };
+        const updatePause = () => {
+          const label = paused ? '播放轮播' : '暂停轮播';
+          pauseButton.textContent = paused ? '\u25b6' : '\u2161';
+          pauseButton.setAttribute('aria-label', label);
+          pauseButton.title = label;
+        };
+        track.addEventListener('scroll', () => {
+          index = Math.round(track.scrollLeft / track.clientWidth);
+          dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+        }, { passive: true });
+        gallery.querySelector('[data-space-prev]').onclick = () => go(index - 1);
+        gallery.querySelector('[data-space-next]').onclick = () => go(index + 1);
+        dots.forEach((dot, i) => dot.onclick = () => go(i));
+        pauseButton.onclick = () => { paused = !paused; updatePause(); schedule(); };
+        track.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            go(index + (event.key === 'ArrowRight' ? 1 : -1));
+          }
+        });
+        ['mouseenter', 'mouseleave', 'focusin'].forEach((event) => gallery.addEventListener(event, schedule));
+        gallery.addEventListener('focusout', () => setTimeout(schedule, 0));
+        document.addEventListener('visibilitychange', schedule);
+        new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }).observe(gallery);
+        new ResizeObserver(() => {
+          track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: 'instant' });
+        }).observe(track);
+        updatePause();
+      })();
+    </script>
+  </body>
+</html>

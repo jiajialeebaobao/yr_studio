@@ -1,0 +1,84 @@
+button, input, select, textarea { font: inherit; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.button { gap: 8px; cursor: pointer; }
+.button.danger { background: #984c43; color: white; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid #789180; outline-offset: 3px; }
+section[id] { scroll-margin-top: 84px; }
+.notice { padding: 16px; background: #eef2eb; color: #3c5343; border-left: 3px solid #8fa895; overflow-wrap: anywhere; }
+.notice.error { background: #f9e9e6; color: #8a3b32; border-color: #bd6a5f; }
+.subtle { display: block; color: var(--muted); font-size: 13px; margin-top: 5px; }
+.status { display: inline-block; color: #3c6148; font-size: 13px; font-weight: 700; }
+.form-hint { font-size: 13px; line-height: 1.6; color: #e0e8df; }
+.live-schedule { grid-template-columns: 190px 1fr 150px 140px; }
+.booking-form h3 { margin-top: 0; }
+.booking-form .button.secondary { color: var(--ink); }
+.booking-form { min-width: 0; }
+.booking-form select, .booking-form input { min-width: 0; }
+.space-card img { display: block; }
+.space-caption { margin: 0; }
+.map-card { margin-left: 0; margin-right: 0; }
+.map-image-wrap { aspect-ratio: 1672 / 941; }
+.map-marker { max-width: 72%; }
+.map-label { min-width: 0; }
+.map-arrow { width: 18%; height: 20%; }
+.map-info-label { font-size: 10px; padding: 3px 5px; }
+.map-info-label.curtain-market { top: 17%; left: 7%; }
+.map-info-label.park-name { left: 66%; white-space: normal; max-width: 30%; }
+.brand-mark { flex-shrink: 0; }
+.brand > span:last-child { font-size: 14px; }
+h1 { font-size: 96px; }
+h2 { font-size: 44px; }
+.detail-page, .login-page { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+.login-page { max-width: 480px; }
+.detail-page h1, .login-page h1, .dashboard h1 { font-size: 32px; line-height: 1.3; margin: 20px 0 24px; }
+.detail-page h2, .dashboard h2 { font-size: 24px; line-height: 1.3; margin: 12px 0; }
+.back-link { font-size: 14px; color: var(--moss); }
+.detail-summary { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.detail-list { margin: 0 0 24px; }
+.detail-list > div { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.detail-list dt { color: var(--muted); }
+.detail-list dd { margin: 0; overflow-wrap: anywhere; }
+.detail-page > * + * { margin-top: 20px; }
+.dashboard { width: min(1200px, calc(100% - 40px)); margin: 0 auto; padding-bottom: 60px; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.dashboard section { padding: 28px 0; border-bottom: 1px solid var(--line); }
+.editor-form { display: grid; gap: 16px; margin-top: 24px; }
+.editor-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.editor-form label, .inline-confirm label { color: var(--ink); }
+.editor-form input, .editor-form select, .inline-confirm input { border: 1px solid var(--line); min-width: 0; background: white; }
+.editor-grid .actions { grid-column: 1 / -1; }
+.table-wrap { overflow-x: auto; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+th, td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { white-space: nowrap; color: var(--muted); background: #edf1e9; font-weight: 500; }
+td { min-width: 100px; }
+.note-cell { min-width: 180px; max-width: 420px; overflow-wrap: anywhere; }
+.icon-button { width: 36px; height: 36px; display: inline-grid; place-items: center; border: 1px solid var(--line); background: white; border-radius: 6px; color: var(--moss); cursor: pointer; }
+.inline-confirm { display: grid; gap: 16px; max-width: 600px; padding: 20px 0; }
+details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+summary { cursor: pointer; font-size: 14px; }
+@media (max-width: 860px) {
+  .live-schedule { grid-template-columns: 1fr; }
+  .editor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  h1 { font-size: 64px; }
+  h2 { font-size: 36px; }
+}
+@media (max-width: 520px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 30px; }
+  .admin-header { align-items: flex-start; flex-direction: column; }
+  .editor-grid { grid-template-columns: 1fr; }
+  .dashboard .button, .detail-page .button { width: auto; }
+  .map-label strong { font-size: 11px; }
+  .map-label span { font-size: 9px; }
+  .map-label { padding: 6px; }
+  .map-info-label { font-size: 8px; }
+  .map-info-label.home-market { top: 65%; left: 10%; }
+  .map-info-label.world-city { top: 48%; left: 8%; }
+  .map-dot { width: 16px; height: 16px; border-width: 4px; }
+  .space-caption { min-height: 110px; }
+  .brand { gap: 6px; }
+  .brand > span:last-child { max-width: none; font-size: 12px; }
+  .nav-cta { padding-inline: 10px; }
+}

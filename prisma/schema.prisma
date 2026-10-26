@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model ClassSession {
+  id           String   @id @default(cuid())
+  title        String
+  teacher      String
+  kind         String
+  startsAt     DateTime
+  duration     Int      @default(60)
+  capacity     Int      @default(8)
+  minimum      Int      @default(3)
+  bookedCount  Int      @default(0)
+  status       String   @default("OPEN")
+  cancelReason String?
+  createdAt    DateTime @default(now())
+  bookings     Booking[]
+  @@index([status, startsAt])
+}
+model Booking {
+  id             String   @id @default(cuid())
+  sessionId      String
+  session        ClassSession @relation(fields: [sessionId], references: [id])
+  name           String
+  phone          String
+  note           String   @default("")
+  status         String   @default("ACTIVE")
+  tokenHash      String   @unique
+  idempotencyKey String   @unique
+  fingerprint    String
+  createdAt      DateTime @default(now())
+  canceledAt     DateTime?
+  @@index([sessionId, phone, status])
+}
+model AdminSession {
+  id        String   @id
+  expiresAt DateTime
+}
+model RateLimit {
+  key       String @id
+  count     Int
+  expiresAt DateTime
+}

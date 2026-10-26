@@ -1,0 +1,47 @@
+# Dependencies and generated build files
+node_modules/
+.next/
+/out/
+/dist/
+next-env.d.ts
+*.tsbuildinfo
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local credentials, databases and backups
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+data/
+backups/
+
+# Test results, screenshots and local caches
+coverage/
+test-results/
+playwright-report/
+artifacts/
+.cache/
+*.log
+.DS_Store
+._*
+*.swp
+*.swo
+
+# Retain only app assets and inputs required by the retained poster script.
+# Other generated artwork and print variations remain local.
+/assets/*
+!/assets/hero-yoga-studio.png
+!/assets/studio-interior-01.jpg
+!/assets/studio-interior-02.jpg
+!/assets/studio-interior-03.jpg
+!/assets/yoga-map-ai.jpg
+!/assets/yiranji-office-yoga-dance-poster-address-corrected-v24.png
+!/assets/yiranji-60x90cm-background-v1.png
